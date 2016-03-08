@@ -12,7 +12,7 @@ namespace AdventureWorksSample
     {
         public static void Register(HttpConfiguration config)
         {
-            config.MapRestierRoute<DbApi<AdventureWorksContext>>("AdventureWorks", "AdventureWorks").Wait();
+            config.MapRestierRoute<AdventureWorksApi>("AdventureWorks", "AdventureWorks").Wait();
         }
     }
 }
