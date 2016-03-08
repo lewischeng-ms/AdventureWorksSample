@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using AdventureWorksSample.Models;
+using Microsoft.Restier.EntityFramework;
+using Microsoft.Restier.WebApi;
 
 namespace AdventureWorksSample
 {
@@ -9,16 +12,7 @@ namespace AdventureWorksSample
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-
-            // Web API routes
-            config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            config.MapRestierRoute<DbApi<AdventureWorksContext>>("AdventureWorks", "AdventureWorks").Wait();
         }
     }
 }
